@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.faithyee.androidlearningdemo.ui.service.ServiceActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <Button
+                android:onClick="start"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="开启服务"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:onClick="stop"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="关闭服务"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:onClick="bind"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="绑定服务"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:onClick="unbind"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="解绑服务"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:onClick="startDownload"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="通信（调用service的开始下载方法）"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:onClick="stopDownload"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="通信（调用service的停止下载方法）"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
