@@ -16,42 +16,27 @@ import com.faithyee.androidlearningdemo.ui.service.MyAIDLService;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 
 /**
- * 服务demo
+ * 本地服务demo
  * Author：yewmf on 2017/12/4 10:50
  * E-mail：faith_yee@163.com
  */
-public class MyService extends Service {
+public class LocalService extends Service {
 
-    private static final String TAG = "MyService";
+    private static final String TAG = "LocalService";
 
     //本地远程服务
     private MyBinder mBinder = new MyBinder();
-
-    //aidl远程服务
-    private MyAIDLService.Stub iBinder = new MyAIDLService.Stub() {
-
-        @Override
-        public int plus(int a, int b) throws RemoteException {
-
-            return a + b;
-        }
-
-        @Override
-        public String toUpperCase(String str) throws RemoteException {
-            return str.toUpperCase();
-        }
-    };
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         LogUtils.i(TAG, "onBind");
-        return iBinder;
+        return mBinder;
     }
 
-    public MyService() {
+    public LocalService() {
         super();
-        LogUtils.i(TAG, "MyService");
+        LogUtils.i(TAG, "LocalService");
     }
 
     @Override

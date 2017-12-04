@@ -17,10 +17,16 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.MyService"
-            android:process=":remote">
+        //本地服务
+        <service android:name=".service.LocalService">
+        </service>
+
+        //远程服务
+        <service android:name=".service.RemoteService"
+                 android:process=":remote"
+                 android:exported="true">
             <intent-filter>
-                <action android:name="com.faithyee.androidlearningdemo.ui.service.MyService"/>
+                <action android:name="com.faithyee.androidlearningdemo.service.RemoteService"/>
             </intent-filter>
         </service>
 

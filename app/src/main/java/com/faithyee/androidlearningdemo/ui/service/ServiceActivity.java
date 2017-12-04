@@ -6,18 +6,17 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Process;
-import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.faithyee.androidlearningdemo.R;
-import com.faithyee.androidlearningdemo.service.MyService;
+import com.faithyee.androidlearningdemo.service.LocalService;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 
 public class ServiceActivity extends AppCompatActivity {
 
-    private MyService.MyBinder myBinder;
+    private LocalService.MyBinder myBinder;
     private static final String TAG = "ServiceActivity";
 
     @Override
@@ -41,32 +40,22 @@ public class ServiceActivity extends AppCompatActivity {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            myBinder = (MyService.MyBinder) service;
+            myBinder = (LocalService.MyBinder) service;
             LogUtils.i(TAG, "onServiceDisconnected 创建连接了");
-//            myAIDLService = MyAIDLService.Stub.asInterface(service);
-//            try {
-//                int result = myAIDLService.plus(3, 5);
-//                String upperStr = myAIDLService.toUpperCase("hello world");
-//                LogUtils.i(TAG, "result is " + result);
-//                LogUtils.i(TAG, "upperStr is " + upperStr);
-//            } catch (RemoteException e) {
-//                e.printStackTrace();
-//            }
-
         }
     };
 
 
     public void start(View v) {
-        startService(new Intent(ServiceActivity.this, MyService.class));
+        startService(new Intent(ServiceActivity.this, LocalService.class));
     }
 
     public void stop(View v) {
-        stopService(new Intent(ServiceActivity.this, MyService.class));
+        stopService(new Intent(ServiceActivity.this, LocalService.class));
     }
 
     public void bind(View v) {
-        bindService(new Intent(ServiceActivity.this, MyService.class), connection, BIND_AUTO_CREATE);
+        bindService(new Intent(ServiceActivity.this, LocalService.class), connection, BIND_AUTO_CREATE);
     }
 
     public void unbind(View v) {
@@ -93,7 +82,5 @@ public class ServiceActivity extends AppCompatActivity {
             myBinder.stopDownload();
         }
     }
-
-
 
 }
