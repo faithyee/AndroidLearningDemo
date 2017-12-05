@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.faithyee.androidlearningdemo.ui.service.MyAIDLService;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
@@ -19,17 +20,13 @@ public class RemoteService extends Service {
     private static final String TAG = "RemoteService";
 
     //aidl远程服务
-    private MyAIDLService.Stub iBinder = new MyAIDLService.Stub() {
-
-        @Override
-        public int plus(int a, int b) throws RemoteException {
-
-            return a + b;
-        }
+    MyAIDLService.Stub iBinder = new MyAIDLService.Stub() {
 
         @Override
         public String toUpperCase(String str) throws RemoteException {
-            return str.toUpperCase();
+            String uppercase = str.toUpperCase();
+            LogUtils.i(TAG, "RemoteService -> toUpperCase = "+ uppercase);
+            return uppercase;
         }
     };
 

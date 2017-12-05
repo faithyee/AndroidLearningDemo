@@ -9,7 +9,5 @@ interface MyAIDLService {
      * and return values in AIDL.
      */
 
-    int plus(int a, int b);
-
     String toUpperCase(String str);
 }

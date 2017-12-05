@@ -12,21 +12,31 @@ import android.view.View;
 
 import com.faithyee.androidlearningdemo.R;
 import com.faithyee.androidlearningdemo.service.LocalService;
+import com.faithyee.androidlearningdemo.service.RemoteService;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 
-public class ServiceActivity extends AppCompatActivity {
+/**
+ * service学习
+ * 1、普通开启服务
+ * 2、绑定本地服务
+ * 3、设置前台服务
+ * 4、解绑服务和关闭服务
+ * 5、服务与Activity通信
+ * 6、aidl通信
+ */
+public class ServiceDemoAct extends AppCompatActivity {
 
     private LocalService.MyBinder myBinder;
-    private static final String TAG = "ServiceActivity";
+    private static final String TAG = "ServiceDemoAct";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogUtils.i(TAG, "onCreate, Thread id is "+ Thread.currentThread().getId());
         LogUtils.i(TAG, "process id is " + Process.myPid());
-        setContentView(R.layout.activity_service);
+        setContentView(R.layout.act_service_demo);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("服务");
+        toolbar.setTitle("服务管理");
         setSupportActionBar(toolbar);
     }
 
@@ -47,15 +57,15 @@ public class ServiceActivity extends AppCompatActivity {
 
 
     public void start(View v) {
-        startService(new Intent(ServiceActivity.this, LocalService.class));
+        startService(new Intent(ServiceDemoAct.this, LocalService.class));
     }
 
     public void stop(View v) {
-        stopService(new Intent(ServiceActivity.this, LocalService.class));
+        stopService(new Intent(ServiceDemoAct.this, LocalService.class));
     }
 
     public void bind(View v) {
-        bindService(new Intent(ServiceActivity.this, LocalService.class), connection, BIND_AUTO_CREATE);
+        bindService(new Intent(ServiceDemoAct.this, LocalService.class), connection, BIND_AUTO_CREATE);
     }
 
     public void unbind(View v) {
@@ -81,6 +91,20 @@ public class ServiceActivity extends AppCompatActivity {
         if(myBinder!=null){
             myBinder.stopDownload();
         }
+    }
+
+    /**
+     * 启动远程服务
+     */
+    public void startRemote(View v){
+        startService(new Intent(ServiceDemoAct.this, RemoteService.class));
+    }
+
+    /**
+     * 关闭远程服务
+     */
+    public void stopRemote(View v){
+        stopService(new Intent(ServiceDemoAct.this, RemoteService.class));
     }
 
 }

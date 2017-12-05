@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.faithyee.androidlearningdemo.ui.service.ServiceActivity">
+    tools:context="com.faithyee.androidlearningdemo.ui.service.ServiceDemoAct">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -77,6 +77,22 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:text="通信（调用service的停止下载方法）"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:onClick="startRemote"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="启动远程服务"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:onClick="stopRemote"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="关闭远程服务"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

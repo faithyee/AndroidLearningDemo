@@ -14,10 +14,18 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:onClick="plus"
+        android:onClick="disconn"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:text="调用app服务中plus功能"
+        android:text="关闭远程服务"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/ed"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:hint="请输入小写字母"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -26,6 +34,15 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:text="调用app服务中uppercase功能"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="结果："
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tv"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

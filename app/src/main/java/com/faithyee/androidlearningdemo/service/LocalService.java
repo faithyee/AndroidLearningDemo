@@ -42,23 +42,9 @@ public class LocalService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        LogUtils.i(TAG, "onCreate, Thread id is "+ Thread.currentThread().getId());
+        LogUtils.i(TAG, "onCreate, Thread id is " + Thread.currentThread().getId());
         LogUtils.i(TAG, "process id is " + Process.myPid());
-
-        //实例化NotificationCompat.Builde并设置相关属性
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                //设置小图标
-                .setSmallIcon(R.mipmap.ic_launcher)
-                //设置通知标题
-                .setContentTitle("最简单的Notification")
-                //设置通知内容
-                .setContentText("只有小图标、标题、内容");
-        //设置通知时间，默认为系统发出通知的时间，通常不用设置
-        //.setWhen(System.currentTimeMillis());
-        //通过builder.build()方法生成Notification对象,并发送通知,id=1
-        Notification notification = builder.build();
-        //注册为前端服务
-        startForeground(1, notification);
+        startForegroundService();
     }
 
     @Override
@@ -85,24 +71,40 @@ public class LocalService extends Service {
         LogUtils.i(TAG, "onRebind");
     }
 
+    /**
+     * 本地服务
+     */
     public class MyBinder extends Binder {
 
         public void startDownload() {
             LogUtils.i(TAG, "startDownload() executed");
-            // 执行具体的下载任务
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            }).start();
         }
 
-        public void stopDownload(){
-            LogUtils.i(TAG,"stopDownload() executed");
+        public void stopDownload() {
+            LogUtils.i(TAG, "stopDownload() executed");
         }
 
     }
 
+    /**
+     * 注册前台服务
+     */
+    public void startForegroundService() {
+        //实例化NotificationCompat.Builde并设置相关属性
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                //设置小图标
+                .setSmallIcon(R.mipmap.ic_launcher)
+                //设置通知标题
+                .setContentTitle("最简单的Notification")
+                //设置通知内容
+                .setContentText("只有小图标、标题、内容");
+        //设置通知时间，默认为系统发出通知的时间，通常不用设置
+        //.setWhen(System.currentTimeMillis());
+        //通过builder.build()方法生成Notification对象,并发送通知,id=1
+        Notification notification = builder.build();
+        //注册为前端服务
+        startForeground(1, notification);
+
+    }
 
 }
