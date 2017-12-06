@@ -35,9 +35,6 @@ public class ServiceDemoAct extends AppCompatActivity {
         LogUtils.i(TAG, "onCreate, Thread id is "+ Thread.currentThread().getId());
         LogUtils.i(TAG, "process id is " + Process.myPid());
         setContentView(R.layout.act_service_demo);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("服务管理");
-        setSupportActionBar(toolbar);
     }
 
     private ServiceConnection connection = new ServiceConnection() {

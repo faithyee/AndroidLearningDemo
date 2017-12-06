@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.faithyee.androidlearningdemo.ui.broadcast.BroadcastDemoAct;
 import com.faithyee.androidlearningdemo.ui.service.ServiceDemoAct;
+import com.faithyee.androidlearningdemo.ui.sqlite.SqliteDemoAct;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case 2:
-                        // TODO: 2017/12/5 数据库demo
+                        //sqlite demo
+                        startActivity(new Intent(MainActivity.this, SqliteDemoAct.class));
+
 
                 }
 
@@ -53,4 +56,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 }

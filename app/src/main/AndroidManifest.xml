@@ -30,7 +30,7 @@
             android:theme="@style/AppTheme" />
 
         <!-- 本地服务 -->
-        <service android:name=".service.LocalService"></service>
+        <service android:name=".service.LocalService" />
 
         <!-- 远程服务 -->
         <service
@@ -50,7 +50,7 @@
             </intent-filter>
         </receiver>
 
-        <!--测试拦截广播,测试拦截，需要两个广播的action名一致，都需要有priority优先级，并且要比没拦截的广播权重高-->
+        <!-- 测试拦截广播,测试拦截，需要两个广播的action名一致，都需要有priority优先级，并且要比没拦截的广播权重高 -->
         <receiver
             android:name=".brocast.MyAbortReceiver"
             android:enabled="true"
@@ -59,6 +59,8 @@
                 <action android:name="com.faithyee.androidlearningdemo.brocast.MyReceiver" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ui.sqlite.SqliteDemoAct"></activity>
     </application>
 
 </manifest>
