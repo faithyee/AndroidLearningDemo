@@ -1,6 +1,7 @@
 package com.faithyee.androidlearningdemo.ui.sqlite;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.faithyee.androidlearningdemo.R;
 import com.faithyee.androidlearningdemo.database.MyDBHelper;
@@ -27,14 +29,19 @@ public class SqliteDemoAct extends AppCompatActivity {
 
     private static final String TAG = "SqliteDemoAct";
     private MyDBHelper myDBHelper;
-
-    private final static String INSERT_DATA = "insert into book values (4,'你好',360,50.5,'SQL教程')";
+    private SQLiteDatabase db;
+    private TextView selectResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_sqlite_demo);
 //
+        myDBHelper = new MyDBHelper(SqliteDemoAct.this, "bookStore.db", null, 3);
+        myDBHelper.getWritableDatabase();
+        db = myDBHelper.getWritableDatabase();
+
+        selectResult = (TextView) findViewById(R.id.select_result);
 
     }
 
@@ -67,10 +74,54 @@ public class SqliteDemoAct extends AppCompatActivity {
     }
 
 
-    public void insertDataSql(View v){
-//        SQLiteDatabase db = myDBHelper.getWritableDatabase();
-//        db.execSQL(INSERT_DATA);
+    public void updateData(View v){
+        if(myDBHelper == null)
+            return;
+
+        ContentValues values = new ContentValues();
+        values.put("author", "晓明");
+        values.put("name", "黑暗中的星光");
+        //更新第n条数据
+        String[] whereArgs = {String.valueOf(2)};
+        db.update("book", values, "id = ?", whereArgs );
     }
+
+    public void deleteData(View v){
+        if(myDBHelper == null)
+            return;
+
+        String[] whereArgs = {String.valueOf(3)};
+        db.delete("book", "id = ?", whereArgs);
+    }
+
+    public void selectDatas(View v){
+        if(myDBHelper == null)
+            return;
+
+        Cursor cursor = db.query("book", null, null, null, null, null, null);
+        StringBuilder builder = new StringBuilder();
+        builder.append("查询结果：\n");
+        if(cursor.moveToFirst()){
+            do{
+                String author = cursor.getString(cursor.getColumnIndex("author"));
+                builder.append("author:" + author + "/");
+                float price = cursor.getFloat(cursor.getColumnIndex("price"));
+                builder.append("price:" + price + "/");
+                int pages = cursor.getInt(cursor.getColumnIndex("pages"));
+                builder.append("pages:" + pages + "/");
+                String bookName = cursor.getString(cursor.getColumnIndex("name"));
+                builder.append("bookName:" + bookName + "/");
+                builder.append("\n");
+
+            }while (cursor.moveToNext());
+            cursor.close();
+        }
+
+        selectResult.setText(builder.toString());
+
+
+    }
+
 
     public void showBookInsertDialog(){
 
@@ -87,8 +138,8 @@ public class SqliteDemoAct extends AppCompatActivity {
             public void onClick(View v) {
 
                 String  mAuthor = author.getText().toString().trim();
-                int mPages = Integer.parseInt(StringUtils.isEmpty(pages.getText().toString().trim())?"0":"");
-                float mPrice = Float.parseFloat(StringUtils.isEmpty(price.getText().toString().trim())?"0":"");
+                int mPages = Integer.parseInt(StringUtils.isEmpty(pages.getText().toString().trim())?"0":pages.getText().toString().trim());
+                float mPrice = Float.parseFloat(StringUtils.isEmpty(price.getText().toString().trim())?"0":price.getText().toString().trim());
                 String mName = name.getText().toString().trim();
                 insertBookData(mAuthor, mPages, mPrice, mName);
 
@@ -97,5 +148,11 @@ public class SqliteDemoAct extends AppCompatActivity {
         });
         dialog.setView(view);
         dialog.show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
     }
 }

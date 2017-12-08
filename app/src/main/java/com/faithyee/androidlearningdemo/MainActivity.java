@@ -8,14 +8,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.faithyee.androidlearningdemo.ui.blueTooth.BlueToothDemoAct;
 import com.faithyee.androidlearningdemo.ui.broadcast.BroadcastDemoAct;
+import com.faithyee.androidlearningdemo.ui.network.NetworkDemoAct;
+import com.faithyee.androidlearningdemo.ui.okhttp.OkhttpDemoAct;
 import com.faithyee.androidlearningdemo.ui.service.ServiceDemoAct;
 import com.faithyee.androidlearningdemo.ui.sqlite.SqliteDemoAct;
+import com.faithyee.androidlearningdemo.ui.volley.VolleyDemoAct;
 
 public class MainActivity extends AppCompatActivity {
 
     private String[] datas = {
-      "服务","广播","Sqlite"
+      "服务","广播","Sqlite", "蓝牙", "HttpURLConnection","Volley","okhttp"
     };
 
     @Override
@@ -46,7 +50,27 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         //sqlite demo
                         startActivity(new Intent(MainActivity.this, SqliteDemoAct.class));
+                        break;
 
+                    case 3:
+                        //蓝牙demo
+                        startActivity(new Intent(MainActivity.this, BlueToothDemoAct.class));
+                        break;
+
+                    case 4:
+                        //HttpURLConnection
+                        startActivity(new Intent(MainActivity.this, NetworkDemoAct.class));
+                        break;
+
+                    case 5:
+                        //volley demo
+                        startActivity(new Intent(MainActivity.this, VolleyDemoAct.class));
+                        break;
+
+                    case 6:
+                        //okhttp demo
+                        startActivity(new Intent(MainActivity.this, OkhttpDemoAct.class));
+                        break;
 
                 }
 
