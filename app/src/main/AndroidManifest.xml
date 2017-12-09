@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.faithyee.androidlearningdemo">
+          package="com.faithyee.androidlearningdemo">
 
     <!-- 网络访问权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- 检查网络变化 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <!-- 允许程序连接到已配对的蓝牙设备 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
     <!-- 允许程序发现和配对蓝牙设备 -->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -25,24 +24,24 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <!-- 服务管理页 -->
         <activity
             android:name=".ui.service.ServiceDemoAct"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
 
         <!-- 广播管理页 -->
         <activity
             android:name=".ui.broadcast.BroadcastDemoAct"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"/>
 
         <!-- 本地服务 -->
-        <service android:name=".service.LocalService" />
+        <service android:name=".service.LocalService"/>
 
         <!-- 远程服务 -->
         <service
@@ -50,7 +49,7 @@
             android:exported="true"
             android:process=":remote">
             <intent-filter>
-                <action android:name="com.faithyee.androidlearningdemo.service.RemoteService" />
+                <action android:name="com.faithyee.androidlearningdemo.service.RemoteService"/>
             </intent-filter>
         </service>
 
@@ -58,7 +57,7 @@
         <!-- 优先级的设定 ，优先级的范围-1000~1000 -->
         <receiver android:name=".brocast.MyReceiver">
             <intent-filter android:priority="10">
-                <action android:name="com.faithyee.androidlearningdemo.brocast.MyReceiver" />
+                <action android:name="com.faithyee.androidlearningdemo.brocast.MyReceiver"/>
             </intent-filter>
         </receiver>
 
@@ -68,15 +67,17 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter android:priority="100">
-                <action android:name="com.faithyee.androidlearningdemo.brocast.MyReceiver" />
+                <action android:name="com.faithyee.androidlearningdemo.brocast.MyReceiver"/>
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.sqlite.SqliteDemoAct" />
-        <activity android:name=".ui.blueTooth.BlueToothDemoAct" />
-        <activity android:name=".ui.network.NetworkDemoAct" />
-        <activity android:name=".ui.volley.VolleyDemoAct" />
-        <activity android:name=".ui.okhttp.OkhttpDemoAct"></activity>
+        <activity android:name=".ui.sqlite.SqliteDemoAct"/>
+        <activity android:name=".ui.blueTooth.BlueToothDemoAct"/>
+        <activity android:name=".ui.network.NetworkDemoAct"/>
+        <activity android:name=".ui.volley.VolleyDemoAct"/>
+        <activity android:name=".ui.okhttp.OkhttpDemoAct"/>
+        <activity android:name=".ui.retrofit.RetrofitDemoAct">
+        </activity>
     </application>
 
 </manifest>

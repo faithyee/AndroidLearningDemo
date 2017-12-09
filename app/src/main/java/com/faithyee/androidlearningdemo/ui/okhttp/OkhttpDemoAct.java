@@ -38,7 +38,7 @@ public class OkhttpDemoAct extends AppCompatActivity {
 
     //okhttp 缓存
     private static final long cacheSize = 1024 * 1024 * 20;// 缓存文件最大限制大小20M
-    private static String cacheDirectory = Environment.getExternalStorageDirectory() + "/okhttpfaithcaches"; // 设置缓存文件路径,/sdcard目录下
+    private static String cacheDirectory = Environment.getExternalStorageDirectory() + "/okhttpcache"; // 设置缓存文件路径,/sdcard目录下
     private static Cache cache = new Cache(new File(cacheDirectory), cacheSize);  //
 
     static {
@@ -66,10 +66,10 @@ public class OkhttpDemoAct extends AppCompatActivity {
         result.setText("");
         Request.Builder requestBuilder = new Request.Builder()
                 //以下是三种缓存策略：maxAge、maxStale、FORCE_NETWORK（必须使用网络）、FORCE_CACHE（只使用缓存）
-//                .cacheControl(new CacheControl.Builder().maxStale(60, TimeUnit.SECONDS).build())
+//                .cacheControl(new CacheControl.Builder().maxStale(10, TimeUnit.SECONDS).build())
 //                .cacheControl(new CacheControl.Builder().maxAge(cache_maxAge_inSeconds, TimeUnit.SECONDS).build())
 //                .cacheControl( CacheControl.FORCE_NETWORK)
-                .cacheControl( CacheControl.FORCE_CACHE)
+//                .cacheControl( CacheControl.FORCE_CACHE)
                 .url(weather_url + "?location=beijing&key=e530e075e7a74c89aed52d3cd87e4268");
         requestBuilder.method("GET", null);
         Request request = requestBuilder.build();
@@ -92,12 +92,12 @@ public class OkhttpDemoAct extends AppCompatActivity {
                         //直接读取缓存
                         str = "Cache responseBody:" + response.cacheResponse().body().string();
 
-
                     }else {
                         str = "responseBody: response失败了，连接状态码为" + response.code();
 
                     }
                 }
+
 
                 LogUtils.i(TAG, str);
                 runOnUiThread(new Runnable() {
