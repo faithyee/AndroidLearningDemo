@@ -78,6 +78,8 @@
         <activity android:name=".ui.okhttp.OkhttpDemoAct"/>
         <activity android:name=".ui.retrofit.RetrofitDemoAct">
         </activity>
+        <activity android:name=".ui.rxjava.RxJavaDemoAct">
+        </activity>
     </application>
 
 </manifest>

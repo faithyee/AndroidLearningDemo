@@ -13,6 +13,7 @@ import com.faithyee.androidlearningdemo.ui.broadcast.BroadcastDemoAct;
 import com.faithyee.androidlearningdemo.ui.network.NetworkDemoAct;
 import com.faithyee.androidlearningdemo.ui.okhttp.OkhttpDemoAct;
 import com.faithyee.androidlearningdemo.ui.retrofit.RetrofitDemoAct;
+import com.faithyee.androidlearningdemo.ui.rxjava.RxJavaDemoAct;
 import com.faithyee.androidlearningdemo.ui.service.ServiceDemoAct;
 import com.faithyee.androidlearningdemo.ui.sqlite.SqliteDemoAct;
 import com.faithyee.androidlearningdemo.ui.volley.VolleyDemoAct;
@@ -20,7 +21,7 @@ import com.faithyee.androidlearningdemo.ui.volley.VolleyDemoAct;
 public class MainActivity extends AppCompatActivity {
 
     private String[] datas = {
-      "服务","广播","Sqlite", "蓝牙", "HttpURLConnection","Volley","okhttp","retrofit2"
+      "服务","广播","Sqlite", "蓝牙", "HttpURLConnection","Volley","okhttp","retrofit2","RxJava"
     };
 
     @Override
@@ -77,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                         //retrofit2 demo
                         startActivity(new Intent(MainActivity.this, RetrofitDemoAct.class));
                         break;
+
+                    case 8:
+                        startActivity(new Intent(MainActivity.this, RxJavaDemoAct.class));
 
 
                 }
