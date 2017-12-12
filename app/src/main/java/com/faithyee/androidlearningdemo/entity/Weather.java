@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.ui.retrofit;
+package com.faithyee.androidlearningdemo.entity;
 
 import java.io.Serializable;
 import java.util.List;

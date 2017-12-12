@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.faithyee.androidlearningdemo.R;
+import com.faithyee.androidlearningdemo.entity.Weather;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 
 import retrofit2.Call;
@@ -30,7 +31,6 @@ public class RetrofitDemoAct extends AppCompatActivity {
 
     public void doGet(View v){
         getInformation("shenzhen", "e530e075e7a74c89aed52d3cd87e4268");
-
     }
 
     public void getInformation(String location, String key){

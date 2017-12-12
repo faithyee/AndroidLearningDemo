@@ -1,5 +1,7 @@
 package com.faithyee.androidlearningdemo.ui.retrofit;
 
+import com.faithyee.androidlearningdemo.entity.Weather;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

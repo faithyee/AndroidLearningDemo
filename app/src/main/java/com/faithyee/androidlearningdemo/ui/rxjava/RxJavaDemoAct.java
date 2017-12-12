@@ -1,5 +1,6 @@
 package com.faithyee.androidlearningdemo.ui.rxjava;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,13 +33,15 @@ import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 public class RxJavaDemoAct extends AppCompatActivity{
-        private static final String TAG = "RxJavaDemoAct";
-        private TextView result;
-        private StringBuffer sb;
-        private boolean intervalSwitch = true;
-        private Disposable disposableInterval;
+    private static final String TAG = "RxJavaDemoAct";
+    private TextView result;
+    private StringBuffer sb;
+    private boolean intervalSwitch = true;
+    private boolean windowSwitch = true;
+    private Disposable disposableInterval;
+    private Disposable windowDisposable;
 
-        @Override
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.act_rx_java_demo);
@@ -46,6 +49,10 @@ public class RxJavaDemoAct extends AppCompatActivity{
 
             result = (TextView) findViewById(R.id.result);
 
+        }
+
+        public void goPractice(View v){
+            startActivity(new Intent(RxJavaDemoAct.this, RxJavaPracticeAct.class));
         }
 
         public void doCreate(View v) {
@@ -164,6 +171,7 @@ public class RxJavaDemoAct extends AppCompatActivity{
          */
         public void doZip(View v) {
             clear();
+            showLog("doZip start o[A,B,C] + o[1,2,3,4,5]\n");
             Observable.zip(getIntegerObservable(), getStringObservable(), new BiFunction<Integer, String, String>() {
                 @Override
                 public String apply(@NonNull Integer integer, @NonNull String s) throws Exception {
@@ -241,6 +249,7 @@ public class RxJavaDemoAct extends AppCompatActivity{
          */
         public void doConcat(View v) {
             clear();
+            showLog("doConcat start concat(Observable.just(4, 5, 6), Observable.just(1, 2, 3))\n");
             Observable.concat(Observable.just(4, 5, 6), Observable.just(1, 2, 3))
                     .subscribe(new Consumer<Integer>() {
                         @Override
@@ -453,18 +462,27 @@ public class RxJavaDemoAct extends AppCompatActivity{
 
                 intervalSwitch = false;
             }else {
-                doStopInterval();
+                stopDisposable();
             }
         }
 
-        public void doStopInterval(){
+        public void stopDisposable(){
             if(disposableInterval != null && !disposableInterval.isDisposed()){
                 disposableInterval.dispose();
-                sb.append("interval isDisposed at " + TimeUtils.getNowtime() + "\n");
+                showLog("interval isDisposed at " + TimeUtils.getNowtime() + "\n");
                 result.setText(sb.toString());
-                LogUtils.i(TAG, "interval isDisposed at " + TimeUtils.getNowtime() + "\n");
                 intervalSwitch = true;
             }
+
+            if(windowDisposable != null && !windowDisposable.isDisposed()){
+                windowDisposable.dispose();
+                showLog("window is disposed at " + TimeUtils.getNowtime() + "\n");
+                result.setText(sb.toString());
+                windowSwitch = true;
+
+            }
+
+
         }
 
         /**
@@ -670,6 +688,174 @@ public class RxJavaDemoAct extends AppCompatActivity{
                     });
         }
 
+        /**
+         *
+         * @param v
+         */
+        public void doMerge(View v){
+            clear();
+            showLog("doMerge start...\n");
+            Observable.merge(getMerge1Observable(), getMerge2Observable())
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<Integer>() {
+                @Override
+                public void accept(Integer integer) throws Exception {
+                    showLog("doMerge accept" + integer + "\n");
+                    result.setText(sb.toString());
+                }
+            });
+        }
+
+        /**
+         * 发射器A 搭配doMerge使用
+         *
+         * @return
+         */
+        private Observable<Integer> getMerge1Observable() {
+            return Observable.create(new ObservableOnSubscribe<Integer>() {
+                @Override
+                public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                    if (!e.isDisposed()) {
+                        showLog("Merge1 emit : 1 \n");
+                        e.onNext(1);
+                        Thread.sleep(100);
+
+                        showLog("Merge1 emit : 2 \n");
+                        e.onNext(2);
+                        Thread.sleep(300);
+
+                        showLog("Merge1 emit : 3 \n");
+                        e.onNext(3);
+                        Thread.sleep(700);
+
+                        showLog("Merge1 emit : 4 \n");
+                        e.onNext(4);
+                        Thread.sleep(900);
+
+                        showLog("Merge1 emit : 5 \n");
+                        e.onNext(5);
+                    }
+                }
+            });
+        }
+
+        /**
+         * 发射器A 搭配doMerge使用
+         *
+         * @return
+         */
+        private Observable<Integer> getMerge2Observable() {
+            return Observable.create(new ObservableOnSubscribe<Integer>() {
+                @Override
+                public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                    if (!e.isDisposed()) {
+                        showLog("Merge2 emit : 6 \n");
+                        e.onNext(6);
+                        Thread.sleep(200);
+
+                        showLog("Merge2 emit : 7 \n");
+                        e.onNext(7);
+                        Thread.sleep(300);
+
+                        showLog("Merge2 emit : 8 \n");
+                        e.onNext(8);
+                        Thread.sleep(800);
+
+                        showLog("Merge2 emit : 9 \n");
+                        e.onNext(9);
+                        Thread.sleep(1000);
+
+                        showLog("Merge2 emit : 10 \n");
+                        e.onNext(10);
+                    }
+                }
+            });
+        }
+
+        /**
+         * 代码中，我们中间采用 reduce ，支持一个 function 为两数值相加，所以应该最后的值是：1 + 2 = 3 + 3 = 6
+         * @param v
+         */
+        public void doReduce(View v){
+            clear();
+            showLog("doReduce start Observable.just(1,2,3) \n");
+            Observable.just(1,2,3)
+                    .reduce(new BiFunction<Integer, Integer, Integer>() {
+                        @Override
+                        public Integer apply(@NonNull Integer integer, @NonNull Integer integer2) throws Exception {
+                            return integer + integer2;
+                        }
+                    })
+                    .subscribe(new Consumer<Integer>() {
+                        @Override
+                        public void accept(Integer integer) throws Exception {
+                            showLog("do Reduce accept : " +integer + "\n" );
+                            result.setText(sb.toString());
+                        }
+                    });
+        }
+
+        /**
+         * scan 操作符作用和上面的 reduce 一致，唯一区别是 reduce 是个只追求结果的坏人，而 scan 会始终如一地把每一个步骤都输出。
+         * @param v
+         */
+        public void doScan(View v){
+            clear();
+            showLog("doscan start Observable.just(1,2,3) \n");
+            Observable.just(1,2,3)
+                    .scan(new BiFunction<Integer, Integer, Integer>() {
+                        @Override
+                        public Integer apply(@NonNull Integer integer, @NonNull Integer integer2) throws Exception {
+                            return integer + integer2;
+                        }
+                    })
+                    .subscribe(new Consumer<Integer>() {
+                        @Override
+                        public void accept(Integer integer) throws Exception {
+                            showLog("do scan accept : " +integer + "\n" );
+                            result.setText(sb.toString());
+                        }
+                    });
+        }
+
+        /**
+         *按照实际划分窗口，将数据发送给不同的Observable
+         */
+        public void doWindow(View v){
+
+            if(windowSwitch){
+                clear();
+                showLog("doWindow start ..\n");
+                windowDisposable = Observable.interval(1, TimeUnit.SECONDS)
+                        .take(15)
+                        .window(3, TimeUnit.SECONDS)
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Consumer<Observable<Long>>() {
+                            @Override
+                            public void accept(Observable<Long> longObservable) throws Exception {
+                                showLog("sub divide start..\n");
+                                longObservable
+                                        .subscribeOn(Schedulers.newThread())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new Consumer<Long>() {
+                                            @Override
+                                            public void accept(Long aLong) throws Exception {
+                                                showLog("window accept " + aLong + "\n");
+                                                result.setText(sb.toString());
+                                            }
+                                        });
+                            }
+                        });
+                windowSwitch = false;
+            }else {
+                stopDisposable();
+            }
+
+
+        }
+
         public void clear() {
             sb.replace(0, sb.length(), "");
             result.setText("");
@@ -678,6 +864,11 @@ public class RxJavaDemoAct extends AppCompatActivity{
         @Override
         protected void onDestroy() {
             super.onDestroy();
-            doStopInterval();
+            stopDisposable();
+        }
+
+        public void showLog(String str){
+            sb.append(str + "\n");
+            LogUtils.i(TAG, str + "\n");
         }
 }
