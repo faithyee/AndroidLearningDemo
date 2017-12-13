@@ -14,6 +14,7 @@
         android:layout_height="match_parent">
 
         <Button
+            android:textAllCaps="false"
             android:layout_marginTop="10dp"
             android:onClick="doGet"
             android:text="get"
@@ -21,6 +22,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <Button
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:onClick="doQueryMap"
+            android:text="doQueryMap"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:onClick="doPath"
+            android:text="doPath"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:onClick="doPost"
+            android:text="doPost"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:textSize="14sp"

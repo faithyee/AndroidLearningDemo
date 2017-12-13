@@ -10,6 +10,8 @@ import com.faithyee.androidlearningdemo.entity.HotMovies;
 import com.faithyee.androidlearningdemo.entity.Weather;
 import com.faithyee.androidlearningdemo.ui.rxjava.retrofit.MovieService;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
+import com.faithyee.androidlearningdemo.utils.SharedPreferencesHelper;
+import com.faithyee.androidlearningdemo.utils.SharedPreferencesUtils;
 import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
@@ -39,6 +41,7 @@ public class RxJavaPracticeAct extends AppCompatActivity {
     private String weather_url = "https://free-api.heweather.com/s6/weather/now";
     private String hot_moive_url = "https://api-m.mtime.cn/";
     private StringBuffer sb;
+    private boolean isFromNet;
 
 
     static {
@@ -130,7 +133,6 @@ public class RxJavaPracticeAct extends AppCompatActivity {
 
     }
 
-
     /**
      * RxJava + Retrofit 请求网络
      * @param v
@@ -164,8 +166,98 @@ public class RxJavaPracticeAct extends AppCompatActivity {
                 });
     }
 
+    /**
+     * 先读取缓存，如果缓存没数据再通过网络请求获取数据后更新UI
+     * @param v
+     */
+    public void doReadCacheBeforeNet(View v){
+//        clear();
+        Observable.concat(getCacheObservable(), getNetObservable())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<HotMovies>() {
+                    @Override
+                    public void accept(HotMovies hotMovies) throws Exception {
+                        showLog("observable accept hotMovies===" + hotMovies.toString() + "\n");
+                        result.setText(sb.toString());
+
+//                if(isFromNet){
+//
+//                }
+
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                    }
+                });
+    }
+
+    /**
+     * 从缓存中读取数据
+     * @return
+     */
+    public Observable<HotMovies> getCacheObservable(){
+        return Observable.create(new ObservableOnSubscribe<HotMovies>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<HotMovies> e) throws Exception {
+//                showLog("create当前线程:"+Thread.currentThread().getName() + "\n");
+                String hot_movies_cache = SharedPreferencesUtils.getString(RxJavaPracticeAct.this, "hot_movies_cache", "");
+                HotMovies hotMovies = new Gson().fromJson(hot_movies_cache, HotMovies.class);
+
+                if(hotMovies != null){ // 如果缓存数据不为空，则直接读取缓存数据，而不读取网络数据
+                    isFromNet = false;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            showLog("读取缓存数据.\n");
+                        }
+                    });
+                    e.onNext(hotMovies);
+
+                }else {//缓存没有数据，直接从网络中读取数据
+                    isFromNet = true;
+                    e.onComplete();
+                }
+            }
+        });
+
+    }
+
+    /**
+     * 从网络中读取数据
+     * @return
+     */
+    public Observable<HotMovies> getNetObservable(){
+
+         return Observable.create(new ObservableOnSubscribe<HotMovies>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<HotMovies> e) throws Exception {
+//                showLog("Observable subscribe : current thread id = " + Thread.currentThread().getId() + "\n");
+
+                Request.Builder requestBuilder = new Request.Builder()
+                        .url("https://api-m.mtime.cn/PageSubArea/HotPlayMovies.api?locationId=366");
+                requestBuilder.method("GET", null);
+                Request request = requestBuilder.build();
+                Call mCall = client.newCall(request);
+                Response response = mCall.execute();
+                if(response.isSuccessful()){
+//                    showLog("Observable map : current thread id = " + Thread.currentThread().getId() + "\n");
+                    HotMovies hotMovies = new Gson().fromJson(response.body().string(),HotMovies.class);
+                    //访问网络成功后缓存网络数据
+                    SharedPreferencesUtils.saveString(RxJavaPracticeAct.this, "hot_movies_cache", response.body().string());
+                    e.onNext(hotMovies);
+                }else {
+                    e.onComplete();
+                }
+            }
+        });
+    }
+
     public void clear(){
         result.setText("");
+        sb.replace(0,sb.length(), "");
     }
 
     public void showLog(String str){
