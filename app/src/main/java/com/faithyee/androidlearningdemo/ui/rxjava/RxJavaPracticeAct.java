@@ -9,9 +9,8 @@ import com.faithyee.androidlearningdemo.R;
 import com.faithyee.androidlearningdemo.entity.HotMovies;
 import com.faithyee.androidlearningdemo.entity.Weather;
 import com.faithyee.androidlearningdemo.ui.rxjava.retrofit.MovieService;
+import com.faithyee.androidlearningdemo.utils.ACache;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
-import com.faithyee.androidlearningdemo.utils.SharedPreferencesHelper;
-import com.faithyee.androidlearningdemo.utils.SharedPreferencesUtils;
 import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
@@ -42,6 +41,7 @@ public class RxJavaPracticeAct extends AppCompatActivity {
     private String hot_moive_url = "https://api-m.mtime.cn/";
     private StringBuffer sb;
     private boolean isFromNet;
+    private ACache mAcache;
 
 
     static {
@@ -62,6 +62,7 @@ public class RxJavaPracticeAct extends AppCompatActivity {
         setContentView(R.layout.act_rx_java_practice);
         sb = new StringBuffer();
         result = (TextView) findViewById(R.id.result);
+        mAcache = ACache.get(this);
     }
 
 
@@ -171,7 +172,7 @@ public class RxJavaPracticeAct extends AppCompatActivity {
      * @param v
      */
     public void doReadCacheBeforeNet(View v){
-//        clear();
+        clear();
         Observable.concat(getCacheObservable(), getNetObservable())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -181,6 +182,7 @@ public class RxJavaPracticeAct extends AppCompatActivity {
                         showLog("observable accept hotMovies===" + hotMovies.toString() + "\n");
                         result.setText(sb.toString());
 
+                        // TODO: 2017/12/13 模拟缓存
 //                if(isFromNet){
 //
 //                }
@@ -202,9 +204,8 @@ public class RxJavaPracticeAct extends AppCompatActivity {
         return Observable.create(new ObservableOnSubscribe<HotMovies>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<HotMovies> e) throws Exception {
-//                showLog("create当前线程:"+Thread.currentThread().getName() + "\n");
-                String hot_movies_cache = SharedPreferencesUtils.getString(RxJavaPracticeAct.this, "hot_movies_cache", "");
-                HotMovies hotMovies = new Gson().fromJson(hot_movies_cache, HotMovies.class);
+                showLog("create当前线程:"+Thread.currentThread().getName() + "\n");
+                HotMovies hotMovies = (HotMovies) mAcache.getAsObject("hotMovies");
 
                 if(hotMovies != null){ // 如果缓存数据不为空，则直接读取缓存数据，而不读取网络数据
                     isFromNet = false;
@@ -234,7 +235,7 @@ public class RxJavaPracticeAct extends AppCompatActivity {
          return Observable.create(new ObservableOnSubscribe<HotMovies>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<HotMovies> e) throws Exception {
-//                showLog("Observable subscribe : current thread id = " + Thread.currentThread().getId() + "\n");
+                showLog("Observable subscribe : current thread id = " + Thread.currentThread().getId() + "\n");
 
                 Request.Builder requestBuilder = new Request.Builder()
                         .url("https://api-m.mtime.cn/PageSubArea/HotPlayMovies.api?locationId=366");
@@ -243,10 +244,10 @@ public class RxJavaPracticeAct extends AppCompatActivity {
                 Call mCall = client.newCall(request);
                 Response response = mCall.execute();
                 if(response.isSuccessful()){
-//                    showLog("Observable map : current thread id = " + Thread.currentThread().getId() + "\n");
+                    showLog("Observable map : current thread id = " + Thread.currentThread().getId() + "\n");
                     HotMovies hotMovies = new Gson().fromJson(response.body().string(),HotMovies.class);
                     //访问网络成功后缓存网络数据
-                    SharedPreferencesUtils.saveString(RxJavaPracticeAct.this, "hot_movies_cache", response.body().string());
+                    mAcache.put("hotMovies",hotMovies);
                     e.onNext(hotMovies);
                 }else {
                     e.onComplete();
