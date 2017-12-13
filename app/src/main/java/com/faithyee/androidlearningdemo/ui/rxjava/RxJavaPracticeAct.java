@@ -1,14 +1,13 @@
 package com.faithyee.androidlearningdemo.ui.rxjava;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.faithyee.androidlearningdemo.R;
 import com.faithyee.androidlearningdemo.entity.HotMovies;
 import com.faithyee.androidlearningdemo.entity.Weather;
-import com.faithyee.androidlearningdemo.ui.okhttp.OkhttpDemoAct;
 import com.faithyee.androidlearningdemo.ui.rxjava.retrofit.MovieService;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 import com.google.gson.Gson;
@@ -28,7 +27,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
@@ -132,6 +131,10 @@ public class RxJavaPracticeAct extends AppCompatActivity {
     }
 
 
+    /**
+     * RxJava + Retrofit 请求网络
+     * @param v
+     */
     public void doRxjavaAndRetrofit(View v){
         clear();
         Retrofit retrofit = new Retrofit.Builder()
@@ -139,24 +142,24 @@ public class RxJavaPracticeAct extends AppCompatActivity {
                 //增加返回值为String的支持
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         MovieService movieService = retrofit.create(MovieService.class);
         Observable<HotMovies> observable = movieService.getHotMovies("366");
-        observable.observeOn(Schedulers.newThread())
-                .subscribeOn(AndroidSchedulers.mainThread())
+        observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<HotMovies>() {
                     @Override
                     public void accept(HotMovies hotMovies) throws Exception {
-//                        showLog("Consumer accept : current thread id = " + Thread.currentThread().getId() + "\n");
-                        showLog("hotMovies===" + hotMovies.toString() + "\n");
+                        showLog("observable accept hotMovies===" + hotMovies.toString() + "\n");
                         result.setText(sb.toString());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-
+                        showLog("observable accept error : " + throwable.getMessage());
+                        result.setText(sb.toString());
                     }
                 });
     }
