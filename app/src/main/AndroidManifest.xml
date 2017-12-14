@@ -76,9 +76,10 @@
         <activity android:name=".ui.network.NetworkDemoAct" />
         <activity android:name=".ui.volley.VolleyDemoAct" />
         <activity android:name=".ui.okhttp.OkhttpDemoAct" />
-        <activity android:name=".ui.retrofit.RetrofitDemoAct"></activity>
-        <activity android:name=".ui.rxjava.RxJavaDemoAct"></activity>
-        <activity android:name=".ui.rxjava.RxJavaPracticeAct"></activity>
+        <activity android:name=".ui.retrofit.RetrofitDemoAct" />
+        <activity android:name=".ui.rxjava.RxJavaDemoAct" />
+        <activity android:name=".ui.rxjava.RxJavaPracticeAct" />
+        <activity android:name=".ui.cache.CacheDemoAct"></activity>
     </application>
 
 </manifest>
