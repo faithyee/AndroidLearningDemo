@@ -11,6 +11,7 @@ import android.view.View;
 import com.faithyee.androidlearningdemo.ui.blueTooth.BlueToothDemoAct;
 import com.faithyee.androidlearningdemo.ui.broadcast.BroadcastDemoAct;
 import com.faithyee.androidlearningdemo.ui.cache.CacheDemoAct;
+import com.faithyee.androidlearningdemo.ui.eventBus.EventBusDemoAct;
 import com.faithyee.androidlearningdemo.ui.network.NetworkDemoAct;
 import com.faithyee.androidlearningdemo.ui.okhttp.OkhttpDemoAct;
 import com.faithyee.androidlearningdemo.ui.retrofit.RetrofitDemoAct;
@@ -22,7 +23,9 @@ import com.faithyee.androidlearningdemo.ui.volley.VolleyDemoAct;
 public class MainActivity extends AppCompatActivity {
 
     private String[] datas = {
-      "服务","广播","Sqlite", "蓝牙", "HttpURLConnection","Volley","okhttp","retrofit2","RxJava","三级缓存"
+      "服务","广播","Sqlite", "蓝牙", "HttpURLConnection",
+            "Volley","okhttp","retrofit2","RxJava","三级缓存",
+            "EventBus"
     };
 
     @Override
@@ -88,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
                     case 9:
                         //cache demo
                         startActivity(new Intent(MainActivity.this, CacheDemoAct.class));
+                        break;
+
+                    case 10:
+                        //eventBus demo
+                        startActivity(new Intent(MainActivity.this, EventBusDemoAct.class));
                         break;
 
 

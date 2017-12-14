@@ -79,7 +79,9 @@
         <activity android:name=".ui.retrofit.RetrofitDemoAct" />
         <activity android:name=".ui.rxjava.RxJavaDemoAct" />
         <activity android:name=".ui.rxjava.RxJavaPracticeAct" />
-        <activity android:name=".ui.cache.CacheDemoAct"></activity>
+        <activity android:name=".ui.cache.CacheDemoAct" />
+        <activity android:name=".ui.eventBus.EventBusDemoAct" />
+        <activity android:name=".ui.eventBus.SecondAct"></activity>
     </application>
 
 </manifest>
