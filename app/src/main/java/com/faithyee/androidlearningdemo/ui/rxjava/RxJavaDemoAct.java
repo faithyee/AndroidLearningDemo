@@ -269,6 +269,8 @@ public class RxJavaDemoAct extends AppCompatActivity{
          */
         public void doFlatMap(View v){
             clear();
+            showLog("doFlatMap start..\n");
+            showLog("Observable.create(->e.onNext(1);e.onNext(2);e.onNext(3);)");
             Observable.create(new ObservableOnSubscribe<Integer>() {
                 @Override
                 public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
@@ -288,17 +290,16 @@ public class RxJavaDemoAct extends AppCompatActivity{
 
                 }
             })
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Consumer<String>() {
-                        @Override
-                        public void accept(String s) throws Exception {
-                            //把多个list铺平了。把数据都铺平成了String
-                            LogUtils.i(TAG, "flatMap : accept : " + s + "\n");
-                            sb.append("flatMap : accept : " + s + "\n");
-                            result.setText(sb.toString());
-                        }
-                    });
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Consumer<String>() {
+                @Override
+                public void accept(String s) throws Exception {
+                    //把多个list铺平了。把数据都铺平成了String
+                    showLog("flatMap : accept : " + s + "\n");
+                    result.setText(sb.toString());
+                }
+            });
         }
 
         /**

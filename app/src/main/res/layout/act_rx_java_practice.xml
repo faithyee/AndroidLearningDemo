@@ -32,7 +32,25 @@
         <Button
             android:textAllCaps="false"
             android:onClick="doReadCacheBeforeNet"
-            android:text="先读缓存后读网络操作"
+            android:text="先读缓存后读网络操作（concat练习）"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:textAllCaps="false"
+            android:onClick="doFlatMapPractice"
+            android:text="请求接口后继续请求另一个接口（flatMap练习）"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:textAllCaps="false"
+            android:onClick="doZipPractice"
+            android:text="同一个页面同时请求两个接口，并合并内容（Zip练习）"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
