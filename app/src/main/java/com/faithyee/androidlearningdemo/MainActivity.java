@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] datas = {
       "服务","广播","Sqlite", "蓝牙", "HttpURLConnection",
             "Volley","okhttp","retrofit2","RxJava","三级缓存",
-            "EventBus","otto"
+            "EventBus","OttoBus"
     };
 
     @Override
