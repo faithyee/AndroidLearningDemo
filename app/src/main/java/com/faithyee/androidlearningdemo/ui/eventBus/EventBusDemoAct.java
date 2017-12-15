@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.faithyee.androidlearningdemo.R;
-import com.faithyee.androidlearningdemo.entity.Message;
+import com.faithyee.androidlearningdemo.entity.EventBusMessage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -28,7 +28,7 @@ public class EventBusDemoAct extends AppCompatActivity {
     }
 
     public void startAct(View v){
-        startActivity(new Intent(EventBusDemoAct.this, SecondAct.class));
+        startActivity(new Intent(EventBusDemoAct.this, EventBusSecondAct.class));
     }
 
     @Override
@@ -51,12 +51,12 @@ public class EventBusDemoAct extends AppCompatActivity {
     public void postSticky(View v){
         //发送粘性事件
         String stickyMsg = ed.getText().toString().trim();
-        EventBus.getDefault().postSticky(new Message(stickyMsg));
+        EventBus.getDefault().postSticky(new EventBusMessage(stickyMsg));
     }
 
     //注册接受eventbus的方法
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(Message messageEvent){
-        result.setText(messageEvent.getMessage());
+    public void onEvent(EventBusMessage eventBusMessageEvent){
+        result.setText(eventBusMessageEvent.getMessage());
     }
 }

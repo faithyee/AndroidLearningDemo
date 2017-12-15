@@ -7,13 +7,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.faithyee.androidlearningdemo.R;
-import com.faithyee.androidlearningdemo.entity.Message;
+import com.faithyee.androidlearningdemo.entity.EventBusMessage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class SecondAct extends AppCompatActivity {
+public class EventBusSecondAct extends AppCompatActivity {
 
     private EditText ed;
     private TextView result;
@@ -21,7 +21,7 @@ public class SecondAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_second);
+        setContentView(R.layout.act_event_bus_second);
         ed = (EditText) findViewById(R.id.ed);
         result = (TextView) findViewById(R.id.result);
         EventBus.getDefault().register(this);
@@ -29,13 +29,13 @@ public class SecondAct extends AppCompatActivity {
 
     public void sendMsg(View v){
         String str = ed.getText().toString().trim();
-        EventBus.getDefault().post(new Message("我是从SecondAct来的消息：" + str));
+        EventBus.getDefault().post(new EventBusMessage("我是从SecondAct来的消息：" + str));
     }
 
     //类似广播，该Act注册了Event，并且定义可该方法，就能接受来之EventBusDemoAct的粘性消息
     @Subscribe(threadMode = ThreadMode.POSTING,sticky = true)
-    public void onStickyEvent(Message messageEvent){
-        result.setText(messageEvent.getMessage());
+    public void onStickyEvent(EventBusMessage eventBusMessageEvent){
+        result.setText(eventBusMessageEvent.getMessage());
     }
 
     @Override

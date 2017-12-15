@@ -81,7 +81,10 @@
         <activity android:name=".ui.rxjava.RxJavaPracticeAct" />
         <activity android:name=".ui.cache.CacheDemoAct" />
         <activity android:name=".ui.eventBus.EventBusDemoAct" />
-        <activity android:name=".ui.eventBus.SecondAct"></activity>
+        <activity android:name=".ui.eventBus.EventBusSecondAct" />
+        <activity android:name=".ui.otto.OttoDemoAct" />
+        <activity android:name=".ui.otto.OttoSecondAct" />
+        <activity android:name=".ui.otto.OttoProduceDemoAct"></activity>
     </application>
 
 </manifest>
