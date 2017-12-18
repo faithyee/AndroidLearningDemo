@@ -61,4 +61,9 @@ dependencies {
     //https://github.com/robolectric/robolectric
     //可以直接运行在JVM上，速度也更快，可以直接由Jenkins周期性执行，无需准备Android环境。
     testCompile "org.robolectric:robolectric:3.5.1"
+
+    //mockito测试框架
+    testCompile "org.mockito:mockito-core:2.+"
+    // required if you want to use Mockito for Android tests
+    androidTestCompile 'org.mockito:mockito-android:2.+'
 }

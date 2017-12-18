@@ -84,7 +84,8 @@
         <activity android:name=".ui.eventBus.EventBusSecondAct" />
         <activity android:name=".ui.otto.OttoDemoAct" />
         <activity android:name=".ui.otto.OttoSecondAct" />
-        <activity android:name=".ui.otto.OttoProduceDemoAct"></activity>
+        <activity android:name=".ui.otto.OttoProduceDemoAct" />
+        <activity android:name=".ui.mvp.MvpDemoAct"></activity>
     </application>
 
 </manifest>

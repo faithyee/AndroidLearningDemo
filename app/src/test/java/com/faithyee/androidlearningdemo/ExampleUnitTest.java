@@ -1,5 +1,7 @@
 package com.faithyee.androidlearningdemo;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,5 +15,6 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+        Assert.assertEquals("2 + 2",4, 2 + 1);
     }
 }
