@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.faithyee.androidlearningdemo.ui.dagger2.Dagger2DemoAct;
 import com.faithyee.androidlearningdemo.ui.mvp.MvpDemoAct;
 import com.faithyee.androidlearningdemo.ui.otto.OttoDemoAct;
 import com.faithyee.androidlearningdemo.ui.blueTooth.BlueToothDemoAct;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] datas = {
       "服务","广播","Sqlite", "蓝牙", "HttpURLConnection",
             "Volley","okhttp","retrofit2","RxJava","三级缓存",
-            "EventBus","OttoBus","Mvp"
+            "EventBus","OttoBus","Mvp","dagger2"
     };
 
     @Override
@@ -108,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
                     case 12:
                         //MVP demo
                         startActivity(new Intent(MainActivity.this, MvpDemoAct.class));
+                        break;
+
+                    case 13:
+                        //dagger2
+                        startActivity(new Intent(MainActivity.this, Dagger2DemoAct.class));
+                        break;
 
 
                 }

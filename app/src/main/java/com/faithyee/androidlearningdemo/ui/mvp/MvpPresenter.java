@@ -3,6 +3,8 @@ package com.faithyee.androidlearningdemo.ui.mvp;
 import com.faithyee.androidlearningdemo.entity.HotMovies;
 import com.faithyee.androidlearningdemo.ui.rxjava.retrofit.MovieService;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;

@@ -1,7 +1,7 @@
 package com.faithyee.androidlearningdemo.ui.mvp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,7 +11,9 @@ import com.faithyee.androidlearningdemo.R;
 public class MvpDemoAct extends AppCompatActivity implements MvpContract.View {
 
     private TextView resultTv;
+
     private MvpContract.Presenter presenter;
+
     private EditText name;
     private EditText pw;
 
@@ -27,7 +29,8 @@ public class MvpDemoAct extends AppCompatActivity implements MvpContract.View {
     }
 
     public void doRxjavaAndRetrofit(View view){
-        presenter.login(name.getText().toString(),
+        presenter.login(
+                name.getText().toString(),
                 pw.getText().toString());
     }
 
@@ -40,4 +43,6 @@ public class MvpDemoAct extends AppCompatActivity implements MvpContract.View {
     public void commitFailed(String result) {
         resultTv.setText(result);
     }
+
+
 }
