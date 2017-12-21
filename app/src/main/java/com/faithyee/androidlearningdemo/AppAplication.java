@@ -19,9 +19,8 @@ public class AppAplication extends Application {
         super.onCreate();
 
         appComponent = DaggerAppComponent.builder()
-                .apiModule(new ApiModule())
+                .apiModule(new ApiModule("https://free-api.heweather.com/"))
                 .build();
-
 
     }
 

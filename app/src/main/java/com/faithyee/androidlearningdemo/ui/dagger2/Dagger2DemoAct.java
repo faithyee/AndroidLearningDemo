@@ -1,7 +1,7 @@
 package com.faithyee.androidlearningdemo.ui.dagger2;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +12,7 @@ import com.faithyee.androidlearningdemo.ui.dagger2.component.AppComponent;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -52,10 +53,12 @@ public class Dagger2DemoAct extends AppCompatActivity implements Dagger2Contract
         AppComponent appComponent = ((AppAplication) getApplication()).getAppComponent();
         /**
          * 此时，注入过程就完成了
+         * 由于Dagger2Component里依赖了ApiModule，而ApiModule已经由AppComponent组装了，因而在此可以
+         * 使用该方式进行注入
          */
         DaggerDagger2Component.builder()
                 .appComponent(appComponent)
-                .dagger2Module(new Dagger2Module(this))
+                .dagger2Module(new Dagger2Module(this))//通过该步把Act的实体类传到Dagger2Module里
                 .build()
                 .inject(this);
 
@@ -64,6 +67,7 @@ public class Dagger2DemoAct extends AppCompatActivity implements Dagger2Contract
     public void login(View view){
 
         LogUtils.i(TAG, "okhttpClint == " + client);
+
         LogUtils.i(TAG, "retrofit  == " + retrofit);
 
         presenter.login(

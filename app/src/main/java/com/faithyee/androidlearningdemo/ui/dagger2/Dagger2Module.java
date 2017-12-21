@@ -16,6 +16,7 @@ public class Dagger2Module {
 
     private final Dagger2Contract.View mView;
 
+    //注意该方法是让act注入时可以把实体类传进来。这是dagger内部自动实现。
     public Dagger2Module(Dagger2Contract.View view) {
         mView = view;
     }
