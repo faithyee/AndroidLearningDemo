@@ -87,7 +87,8 @@
         <activity android:name=".ui.otto.OttoSecondAct" />
         <activity android:name=".ui.otto.OttoProduceDemoAct" />
         <activity android:name=".ui.mvp.MvpDemoAct" />
-        <activity android:name=".ui.dagger2.Dagger2DemoAct"></activity>
+        <activity android:name=".ui.dagger2.Dagger2DemoAct" />
+        <activity android:name=".ui.view.ViewDemoActivity"></activity>
     </application>
 
 </manifest>

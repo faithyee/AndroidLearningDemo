@@ -21,6 +21,7 @@ import com.faithyee.androidlearningdemo.ui.retrofit.RetrofitDemoAct;
 import com.faithyee.androidlearningdemo.ui.rxjava.RxJavaDemoAct;
 import com.faithyee.androidlearningdemo.ui.service.ServiceDemoAct;
 import com.faithyee.androidlearningdemo.ui.sqlite.SqliteDemoAct;
+import com.faithyee.androidlearningdemo.ui.view.ViewDemoActivity;
 import com.faithyee.androidlearningdemo.ui.volley.VolleyDemoAct;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] datas = {
       "服务","广播","Sqlite", "蓝牙", "HttpURLConnection",
             "Volley","okhttp","retrofit2","RxJava","三级缓存",
-            "EventBus","OttoBus","Mvp","dagger2"
+            "EventBus","OttoBus","Mvp","dagger2","自定义view"
     };
 
     @Override
@@ -114,6 +115,11 @@ public class MainActivity extends AppCompatActivity {
                     case 13:
                         //dagger2
                         startActivity(new Intent(MainActivity.this, Dagger2DemoAct.class));
+                        break;
+
+                    case 14:
+                        //自定义view
+                        startActivity(new Intent(MainActivity.this, ViewDemoActivity.class));
                         break;
 
 
