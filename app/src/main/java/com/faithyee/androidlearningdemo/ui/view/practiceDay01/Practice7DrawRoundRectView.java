@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.ui.view;
+package com.faithyee.androidlearningdemo.ui.view.practiceDay01;
 
 import android.content.Context;
 import android.graphics.Canvas;
