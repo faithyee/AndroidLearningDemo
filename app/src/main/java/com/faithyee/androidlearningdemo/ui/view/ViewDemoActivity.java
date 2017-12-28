@@ -68,6 +68,39 @@ public class ViewDemoActivity extends AppCompatActivity {
         pageModels.add(new PageModel(R.string.title_measure_text, R.layout.practice_measure_text));
         pageModels.add(new PageModel(R.string.title_get_text_bounds, R.layout.practice_get_text_bounds));
         pageModels.add(new PageModel(R.string.title_get_font_metrics, R.layout.practice_get_font_metrics));
+
+        pageModels.add(new PageModel(R.string.title_clip_rect, R.layout.practice_clip_rect));
+        pageModels.add(new PageModel(R.string.title_clip_path, R.layout.practice_clip_path));
+        pageModels.add(new PageModel(R.string.title_translate, R.layout.practice_translate));
+        pageModels.add(new PageModel(R.string.title_scale, R.layout.practice_scale));
+        pageModels.add(new PageModel(R.string.title_rotate, R.layout.practice_rotate));
+        pageModels.add(new PageModel(R.string.title_skew, R.layout.practice_skew));
+        pageModels.add(new PageModel(R.string.title_matrix_translate, R.layout.practice_matrix_translate));
+        pageModels.add(new PageModel(R.string.title_matrix_scale, R.layout.practice_matrix_scale));
+        pageModels.add(new PageModel(R.string.title_matrix_rotate, R.layout.practice_matrix_rotate));
+        pageModels.add(new PageModel(R.string.title_matrix_skew, R.layout.practice_matrix_skew));
+        pageModels.add(new PageModel(R.string.title_camera_rotate, R.layout.practice_camera_rotate));
+        pageModels.add(new PageModel(R.string.title_camera_rotate_fixed, R.layout.practice_camera_rotate_fixed));
+        pageModels.add(new PageModel(R.string.title_camera_rotate_hitting_face, R.layout.practice_camera_rotate_hitting_face));
+        pageModels.add(new PageModel(R.string.title_flipboard, R.layout.practice_flipboard));
+
+        pageModels.add(new PageModel(R.string.title_after_on_draw, R.layout.practice_after_on_draw));
+        pageModels.add(new PageModel(R.string.title_before_on_draw, R.layout.practice_before_on_draw));
+        pageModels.add(new PageModel(R.string.title_on_draw_layout, R.layout.practice_on_draw_layout));
+        pageModels.add(new PageModel(R.string.title_dispatch_draw, R.layout.practice_dispatch_draw));
+        pageModels.add(new PageModel(R.string.title_after_on_draw_foreground, R.layout.practice_after_on_draw_foreground));
+        pageModels.add(new PageModel(R.string.title_before_on_draw_foreground, R.layout.practice_before_on_draw_foreground));
+        pageModels.add(new PageModel(R.string.title_after_draw, R.layout.practice_after_draw));
+        pageModels.add(new PageModel(R.string.title_before_draw, R.layout.practice_before_draw));
+
+        pageModels.add(new PageModel(R.string.title_translation, R.layout.practice_translation));
+        pageModels.add(new PageModel(R.string.title_rotation, R.layout.practice_rotation));
+        pageModels.add(new PageModel(R.string.title_scale_anim, R.layout.practice_scale_anim));
+        pageModels.add(new PageModel(R.string.title_alpha, R.layout.practice_alpha));
+        pageModels.add(new PageModel(R.string.title_multi_properties, R.layout.practice_multi_properties));
+        pageModels.add(new PageModel(R.string.title_duration, R.layout.practice_duration));
+        pageModels.add(new PageModel(R.string.title_interpolator, R.layout.practice_interpolator));
+        pageModels.add(new PageModel(R.string.title_object_animator, R.layout.practice_object_animator));
     }
 
 
