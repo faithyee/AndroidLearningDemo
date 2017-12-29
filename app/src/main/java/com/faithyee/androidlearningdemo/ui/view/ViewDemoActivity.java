@@ -101,6 +101,13 @@ public class ViewDemoActivity extends AppCompatActivity {
         pageModels.add(new PageModel(R.string.title_duration, R.layout.practice_duration));
         pageModels.add(new PageModel(R.string.title_interpolator, R.layout.practice_interpolator));
         pageModels.add(new PageModel(R.string.title_object_animator, R.layout.practice_object_animator));
+
+        pageModels.add(new PageModel(R.string.title_argb_evaluator, R.layout.practice_argb_evaluator));
+        pageModels.add(new PageModel(R.string.title_hsv_evaluator, R.layout.practice_hsv_evaluator));
+        pageModels.add(new PageModel(R.string.title_of_object, R.layout.practice_of_object));
+        pageModels.add(new PageModel(R.string.title_property_values_holder, R.layout.practice_property_values_holder));
+        pageModels.add(new PageModel(R.string.title_animator_set, R.layout.practice_animator_set));
+        pageModels.add(new PageModel(R.string.title_keyframe, R.layout.practice_keyframe));
     }
 
 
