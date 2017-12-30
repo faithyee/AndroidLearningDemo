@@ -108,6 +108,8 @@ public class ViewDemoActivity extends AppCompatActivity {
         pageModels.add(new PageModel(R.string.title_property_values_holder, R.layout.practice_property_values_holder));
         pageModels.add(new PageModel(R.string.title_animator_set, R.layout.practice_animator_set));
         pageModels.add(new PageModel(R.string.title_keyframe, R.layout.practice_keyframe));
+
+        pageModels.add(new PageModel(R.string.title_thumb_up, R.layout.practice_thumb_up_view_layout));
     }
 
 

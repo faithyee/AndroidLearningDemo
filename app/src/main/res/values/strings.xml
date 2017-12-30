@@ -112,4 +112,7 @@
     <string name="title_keyframe">PropertyValuesHolder.ofKeyframe()</string>
     <string name="animate_day07">animate</string>
 
+
+    <string name="title_thumb_up">thumbUpView</string>
+
 </resources>
