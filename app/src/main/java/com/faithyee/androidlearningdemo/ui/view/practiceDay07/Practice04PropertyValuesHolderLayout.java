@@ -47,7 +47,7 @@ public class Practice04PropertyValuesHolderLayout extends RelativeLayout {
 
 
                 // 然后，用 ObjectAnimator.ofPropertyValuesHolder() 把三个属性合并，创建 Animator 然后执行
-                ObjectAnimator.ofPropertyValuesHolder(view, holder1, holder2, holder3);
+                ObjectAnimator.ofPropertyValuesHolder(view, holder1, holder2, holder3).start();
             }
         });
     }

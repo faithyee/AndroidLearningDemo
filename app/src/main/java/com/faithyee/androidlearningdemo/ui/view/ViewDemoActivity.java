@@ -25,6 +25,8 @@ public class ViewDemoActivity extends AppCompatActivity {
     List<PageModel> pageModels = new ArrayList<>();
 
     {
+        pageModels.add(new PageModel(R.string.title_thumb_up, R.layout.practice_thumb_up_view_layout));
+
         pageModels.add(new PageModel(R.string.title_draw_color, R.layout.practice_color));
         pageModels.add(new PageModel(R.string.title_draw_circle, R.layout.practice_circle));
         pageModels.add(new PageModel(R.string.title_draw_rect, R.layout.practice_rect));
@@ -109,7 +111,7 @@ public class ViewDemoActivity extends AppCompatActivity {
         pageModels.add(new PageModel(R.string.title_animator_set, R.layout.practice_animator_set));
         pageModels.add(new PageModel(R.string.title_keyframe, R.layout.practice_keyframe));
 
-        pageModels.add(new PageModel(R.string.title_thumb_up, R.layout.practice_thumb_up_view_layout));
+
     }
 
 
