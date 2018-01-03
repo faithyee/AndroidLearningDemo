@@ -70,5 +70,6 @@ public class TulUtils {
                 break;
         }
         return result;
+
     }
 }

@@ -2,6 +2,7 @@ package com.faithyee.androidlearningdemo.ui.view.practiceDay01;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -29,8 +30,13 @@ public class Practice1DrawColorView extends View {
 
 //        canvas.drawColor(Color.YELLOW);
 //        canvas.drawColor(Color.parseColor("#3ec447"));
+        canvas.drawColor(Color.argb(
+                100,            //A 0~255
+                Color.red(Color.parseColor("#3ec447")), //R
+                Color.green(Color.parseColor("#3ec447")), //G
+                Color.blue(Color.parseColor("#3ec447"))));//B
 //        canvas.drawRGB(100,200,100);
-        canvas.drawARGB(100,200,100,100);
+//        canvas.drawARGB(100,200,100,100);
 
     }
 }

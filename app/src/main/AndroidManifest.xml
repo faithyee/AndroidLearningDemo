@@ -22,8 +22,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,12 +38,16 @@
         <!-- 服务管理页 -->
         <activity
             android:name=".ui.service.ServiceDemoAct"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
 
         <!-- 广播管理页 -->
         <activity
             android:name=".ui.broadcast.BroadcastDemoAct"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
 
         <!-- 本地服务 -->
         <service android:name=".service.LocalService" />
@@ -72,23 +80,57 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.sqlite.SqliteDemoAct" />
-        <activity android:name=".ui.blueTooth.BlueToothDemoAct" />
-        <activity android:name=".ui.network.NetworkDemoAct" />
-        <activity android:name=".ui.volley.VolleyDemoAct" />
-        <activity android:name=".ui.okhttp.OkhttpDemoAct" />
-        <activity android:name=".ui.retrofit.RetrofitDemoAct" />
-        <activity android:name=".ui.rxjava.RxJavaDemoAct" />
-        <activity android:name=".ui.rxjava.RxJavaPracticeAct" />
-        <activity android:name=".ui.cache.CacheDemoAct" />
-        <activity android:name=".ui.eventBus.EventBusDemoAct" />
-        <activity android:name=".ui.eventBus.EventBusSecondAct" />
-        <activity android:name=".ui.otto.OttoDemoAct" />
-        <activity android:name=".ui.otto.OttoSecondAct" />
-        <activity android:name=".ui.otto.OttoProduceDemoAct" />
-        <activity android:name=".ui.mvp.MvpDemoAct" />
-        <activity android:name=".ui.dagger2.Dagger2DemoAct" />
-        <activity android:name=".ui.view.ViewDemoActivity"></activity>
+        <activity android:name=".ui.sqlite.SqliteDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.blueTooth.BlueToothDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.network.NetworkDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.volley.VolleyDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.okhttp.OkhttpDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.retrofit.RetrofitDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.rxjava.RxJavaDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.rxjava.RxJavaPracticeAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.cache.CacheDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.eventBus.EventBusDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.eventBus.EventBusSecondAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.otto.OttoDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.otto.OttoSecondAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.otto.OttoProduceDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.mvp.MvpDemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.dagger2.Dagger2DemoAct"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".ui.view.ViewDemoActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
     </application>
 
 </manifest>
