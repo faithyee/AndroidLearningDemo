@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="10dp"
-        app:tul_count="109"/>
+        app:tul_count="1099"/>
 
     <!--<EditText-->
         <!--android:id="@+id/ed_num"-->

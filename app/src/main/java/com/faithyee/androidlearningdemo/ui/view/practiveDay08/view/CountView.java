@@ -65,9 +65,9 @@ public class CountView extends View {
         mTextPoints[1] = new TulPoint();
         mTextPoints[2] = new TulPoint();
 
-//        calculateChangeNum(0);
-//        mMinOffsetY = 0;
-//        mMaxOffsetY = mTextSize;
+        calculateChangeNum(0);
+        mMinOffsetY = 0;
+        mMaxOffsetY = mTextSize;
 
         //A为0，即完全透明。值范围0~255
         mEndTextColor = Color.argb(0, Color.red(mTextColor), Color.green(mTextColor), Color.blue(mTextColor));
@@ -160,6 +160,10 @@ public class CountView extends View {
         String oldNum = String.valueOf(mNum);
         String newNum = String.valueOf(mNum + change);
 
+        /**
+         * eg：oldNum 198 -->    T[0]=199,   T[1]=8,    T[2]=9
+         *      oldNum 199 ->   T[0]=0,    T[1]=199, T[2]=200
+         */
         for (int i = 0; i < oldNum.length(); i++) {
             //把新旧两个数字的每一位都取出来，进行对比
             char oldC = oldNum.charAt(i);
@@ -193,10 +197,10 @@ public class CountView extends View {
         calculateLocation();
     }
 
-    private void calculateLocation() {//在ThumbUpLayout的setNum时会导致该方法回调
+    private void calculateLocation() {
         String text = String.valueOf(mNum);
-        float textWidth = mTextPaint.measureText(text) / text.length();
-        float unChangeWidth = textWidth * mTexts[0].length();
+        float textWidth = mTextPaint.measureText(text) / text.length();//单个字母的宽度
+        float unChangeWidth = textWidth * mTexts[0].length();//如果mTexts[0]为""，哪个length为0
 
         Paint.FontMetricsInt fontMetrics = mTextPaint.getFontMetricsInt();
         float y = getPaddingTop() + (getContentHeight() - fontMetrics.bottom - fontMetrics.top) / 2;
@@ -212,7 +216,7 @@ public class CountView extends View {
 
     public void setTextOffsetY(float offsetY) {
         this.mOldOffsetY = offsetY;//变大是从[0,1]，变小是[0,-1]
-        if (mCountToBigger) {//从下到上[-1,0]
+        if (mCountToBigger) {//mNewOffsetY从下到上[-1,0]
             this.mNewOffsetY = offsetY - mMaxOffsetY;
         } else {//从上到下[1,0]
             this.mNewOffsetY = mMaxOffsetY + offsetY;
@@ -227,6 +231,7 @@ public class CountView extends View {
         return mMinOffsetY;
     }
 
+    //mMaxOffsetY为字母的高度 15sp，mMinOffsetY为0
     public void startAnim(boolean isToBigger) {
         mCountToBigger = isToBigger;
         ObjectAnimator textOffsetY = ObjectAnimator.ofFloat(this, "textOffsetY", mMinOffsetY, mCountToBigger ? mMaxOffsetY : -mMaxOffsetY);
