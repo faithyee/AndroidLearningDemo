@@ -71,7 +71,7 @@ public class ThumbUpLayout extends LinearLayout implements View.OnClickListener 
 
     private void addThumbView() {
         mThumbView = new ThumbView(getContext());
-//        mThumbView.setIsThumbUp(mIsThumbUp);
+        mThumbView.setIsThumbUp(mIsThumbUp);
         TulPoint circlePoint = mThumbView.getCirclePoint();
         mTopMargin = (int) (circlePoint.y - mTextSize / 2);
         addView(mThumbView, getThumbParams());
@@ -118,5 +118,6 @@ public class ThumbUpLayout extends LinearLayout implements View.OnClickListener 
         } else {
             mNumView.calculateChangeNum(-1);
         }
+        mThumbView.startAnim();
     }
 }

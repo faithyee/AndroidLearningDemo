@@ -19,6 +19,13 @@ public class TulUtils {
         return (int) (spValue * fontScale + 0.5f);
     }
 
+    /**
+     * 该算法可以通过fraction 来使颜色值从原色慢慢变淡
+     * @param fraction
+     * @param startValue
+     * @param endValue
+     * @return
+     */
     public static Object evaluate(float fraction, Object startValue, Object endValue) {
         int startInt = (Integer) startValue;
         float startA = ((startInt >> 24) & 0xff) / 255.0f;
