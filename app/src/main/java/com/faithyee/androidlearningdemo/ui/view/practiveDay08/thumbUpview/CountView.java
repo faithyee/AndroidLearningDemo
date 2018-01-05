@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.ui.view.practiveDay08.view;
+package com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

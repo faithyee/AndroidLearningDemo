@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.faithyee.androidlearningdemo.ui.view.practiveDay08.PracticeThumbUpViewLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,35 +8,26 @@
     android:clipChildren="false"
     android:orientation="vertical">
 
-    <!--<net.arvin.thumbupsample.OldThumbUpView-->
-        <!--android:id="@+id/oldThumbUpView"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:padding="10dp"-->
-        <!--app:o_tuv_count="109"/>-->
-
-
-    <com.faithyee.androidlearningdemo.ui.view.practiveDay08.view.ThumbUpLayout
-        android:id="@+id/newThumbUpView"
+    <com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview.ThumbUpLayout
+        android:id="@+id/thumbUpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="10dp"
         app:tul_count="1099"/>
 
-    <!--<EditText-->
-        <!--android:id="@+id/ed_num"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:hint="请输入数字"-->
-        <!--android:inputType="number"/>-->
+    <EditText
+        android:id="@+id/ed_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入数字"
+        android:inputType="number"/>
 
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:onClick="setNum"-->
-        <!--android:text="设置"-->
-        <!--/>-->
+    <Button
+        android:id="@+id/bt_set_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置"
+        />
 
-</LinearLayout>
+</com.faithyee.androidlearningdemo.ui.view.practiveDay08.PracticeThumbUpViewLayout>

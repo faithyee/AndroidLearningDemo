@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.ui.view.practiveDay08.view;
+package com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -236,11 +236,12 @@ public class ThumbView extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                //点击过快的关键逻辑,即点击过快数次之后，点击停止后，判断多次点击后的次数是单还是双
+
                 mEndCount++;
                 if (mClickCount != mEndCount) {
-                    return;
+                    return;//?
                 }
+                //点击过快的关键逻辑,即点击过快数次之后，点击停止后，判断多次点击后的次数是单还是双
                 if (mClickCount % 2 == 0) {
                     startThumbDownAnim();//偶数，即取消点赞
                 } else {

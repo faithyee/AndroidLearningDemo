@@ -1,8 +1,10 @@
-package com.faithyee.androidlearningdemo.ui.view.practiveDay08.view;
+package com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,4 +122,59 @@ public class ThumbUpLayout extends LinearLayout implements View.OnClickListener 
         }
         mThumbView.startAnim();
     }
+
+    public void setThumbUpClickListener(ThumbView.ThumbUpClickListener listener){
+        mThumbView.setThumbUpClickListener(listener);
+    }
+
+    public ThumbUpLayout setCount(int mCount) {
+        this.mNum = mCount;
+        mNumView.setNum(mCount);
+        return this;
+    }
+
+    public ThumbUpLayout setTextColor(int mTextColor) {
+        this.mTextColor = mTextColor;
+        mNumView.setTextColor(mTextColor);
+        return this;
+    }
+
+    public ThumbUpLayout setTextSize(float mTextSize) {
+        this.mTextSize = mTextSize;
+        mNumView.setTextSize(mTextSize);
+        return this;
+    }
+
+
+    public ThumbUpLayout setThumbUp(boolean isThumbUp) {
+        this.mIsThumbUp = isThumbUp;
+        mThumbView.setIsThumbUp(mIsThumbUp);
+        return this;
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Bundle data = new Bundle();
+        data.putParcelable("superData", super.onSaveInstanceState());
+        data.putInt("count", mNum);
+        data.putFloat("textSize", mTextSize);
+        data.putInt("textColor", mTextColor);
+        data.putBoolean("isThumbUp", mIsThumbUp);
+        data.putFloat("drawablePadding", mDrawablePadding);
+        return data;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        Bundle data = (Bundle) state;
+        Parcelable superData = data.getParcelable("superData");
+        super.onRestoreInstanceState(superData);
+        mNum = data.getInt("count");
+        mTextSize = data.getFloat("textSize", TulUtils.sp2px(getContext(), CountView.DEFAULT_TEXT_SIZE));
+        mTextColor = data.getInt("textColor", Color.parseColor(CountView.DEFAULT_TEXT_COLOR));
+        mIsThumbUp = data.getBoolean("isThumbUp", false);
+        mDrawablePadding = data.getFloat("drawablePadding", TulUtils.sp2px(getContext(), DEFAULT_DRAWABLE_PADDING));
+        init();
+    }
+
 }
