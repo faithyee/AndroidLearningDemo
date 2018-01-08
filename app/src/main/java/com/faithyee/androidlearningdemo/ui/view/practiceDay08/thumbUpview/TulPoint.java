@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview;
+package com.faithyee.androidlearningdemo.ui.view.practiceDay08.thumbUpview;
 
 /**
  * Author：yewmf on 2018/1/2 10:20

@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview;
+package com.faithyee.androidlearningdemo.ui.view.practiceDay08.thumbUpview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

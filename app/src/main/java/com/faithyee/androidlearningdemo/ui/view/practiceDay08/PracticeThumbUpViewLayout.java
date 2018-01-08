@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.ui.view.practiveDay08;
+package com.faithyee.androidlearningdemo.ui.view.practiceDay08;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.faithyee.androidlearningdemo.R;
-import com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview.ThumbUpLayout;
-import com.faithyee.androidlearningdemo.ui.view.practiveDay08.thumbUpview.ThumbView;
+import com.faithyee.androidlearningdemo.ui.view.practiceDay08.thumbUpview.ThumbUpLayout;
+import com.faithyee.androidlearningdemo.ui.view.practiceDay08.thumbUpview.ThumbView;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 
 

@@ -115,4 +115,7 @@
 
     <string name="title_thumb_up">thumbUpView</string>
 
+
+    <string name="title_practice_view">view</string>
+
 </resources>

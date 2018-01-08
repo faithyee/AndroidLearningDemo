@@ -25,6 +25,8 @@ public class ViewDemoActivity extends AppCompatActivity {
     List<PageModel> pageModels = new ArrayList<>();
 
     {
+        pageModels.add(new PageModel(R.string.title_practice_view, R.layout.practice_day_09_demo_layout));
+
         pageModels.add(new PageModel(R.string.title_thumb_up, R.layout.practice_thumb_up_view_layout));
 
         pageModels.add(new PageModel(R.string.title_draw_color, R.layout.practice_color));
