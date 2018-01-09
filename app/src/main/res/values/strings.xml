@@ -117,5 +117,6 @@
 
 
     <string name="title_practice_view">view</string>
+    <string name="title_practice_scroller_layout">scrollerLayout</string>
 
 </resources>
