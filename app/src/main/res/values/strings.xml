@@ -113,10 +113,4 @@
     <string name="animate_day07">animate</string>
 
 
-    <string name="title_thumb_up">thumbUpView</string>
-
-
-    <string name="title_practice_view">view</string>
-    <string name="title_practice_scroller_layout">scrollerLayout</string>
-
 </resources>

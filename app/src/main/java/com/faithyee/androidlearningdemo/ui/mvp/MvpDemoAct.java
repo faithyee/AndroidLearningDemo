@@ -20,7 +20,7 @@ public class MvpDemoAct extends AppCompatActivity implements MvpContract.View {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mvp_demo);
+        setContentView(R.layout.act_mvp_demo);
         presenter = new MvpPresenter(this);
         resultTv = (TextView) findViewById(R.id.result);
         name = (EditText) findViewById(R.id.name);

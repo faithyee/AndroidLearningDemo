@@ -3,4 +3,8 @@
     <color name="colorPrimary">#38ac38</color>
     <color name="colorPrimaryDark">#3ec447</color>
     <color name="colorAccent">#e2d2d44b</color>
+    <color name="colorGray">#e2e5e2</color>
+    <color name="colorDirtyWithe">#f6f9f6</color>
+    <color name="colorForgiven">#4bbb74</color>
+    <color name="colorLightBlack">#2B2E2B</color>
 </resources>

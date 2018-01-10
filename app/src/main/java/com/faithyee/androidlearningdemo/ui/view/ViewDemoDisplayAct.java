@@ -18,19 +18,13 @@ import java.util.List;
  * 基本实现
  *
  */
-public class ViewDemoActivity extends AppCompatActivity {
+public class ViewDemoDisplayAct extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager pager;
     List<PageModel> pageModels = new ArrayList<>();
 
     {
-        pageModels.add(new PageModel(R.string.title_practice_scroller_layout, R.layout.practice_scroller_layout));
-
-        pageModels.add(new PageModel(R.string.title_practice_view, R.layout.practice_day_09_demo_layout));
-
-        pageModels.add(new PageModel(R.string.title_thumb_up, R.layout.practice_thumb_up_view_layout));
-
         pageModels.add(new PageModel(R.string.title_draw_color, R.layout.practice_color));
         pageModels.add(new PageModel(R.string.title_draw_circle, R.layout.practice_circle));
         pageModels.add(new PageModel(R.string.title_draw_rect, R.layout.practice_rect));
@@ -122,7 +116,7 @@ public class ViewDemoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_view_demo);
+        setContentView(R.layout.act_view_display_demo);
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
 

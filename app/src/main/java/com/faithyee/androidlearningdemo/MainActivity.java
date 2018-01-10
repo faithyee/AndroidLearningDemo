@@ -21,7 +21,8 @@ import com.faithyee.androidlearningdemo.ui.retrofit.RetrofitDemoAct;
 import com.faithyee.androidlearningdemo.ui.rxjava.RxJavaDemoAct;
 import com.faithyee.androidlearningdemo.ui.service.ServiceDemoAct;
 import com.faithyee.androidlearningdemo.ui.sqlite.SqliteDemoAct;
-import com.faithyee.androidlearningdemo.ui.view.ViewDemoActivity;
+import com.faithyee.androidlearningdemo.ui.view.ViewDemoAct;
+import com.faithyee.androidlearningdemo.ui.view.ViewDemoDisplayAct;
 import com.faithyee.androidlearningdemo.ui.volley.VolleyDemoAct;
 
 public class MainActivity extends AppCompatActivity {
@@ -119,8 +120,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case 14:
                         //自定义view
-                        startActivity(new Intent(MainActivity.this, ViewDemoActivity.class));
+                        startActivity(new Intent(MainActivity.this, ViewDemoAct.class));
                         break;
+
+
 
 
                 }

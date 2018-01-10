@@ -52,10 +52,10 @@ public class CustomView extends View {
 
 
 //                //01（移动方法1）调用layout方法重新放置它的位置
-//                layout(getLeft() + offsetX,
-//                        getTop() + offsetY,
-//                        getRight() + offsetX,
-//                        getBottom() + offsetY);
+                layout(getLeft() + offsetX,
+                        getTop() + offsetY,
+                        getRight() + offsetX,
+                        getBottom() + offsetY);
 
                 //02（移动方法2）
                 //对left和right进行偏移
@@ -70,7 +70,7 @@ public class CustomView extends View {
 //                setLayoutParams(layoutParams);
 
                 //04 scrollTo & scrollBy
-                ((View)getParent()).scrollBy(-offsetX, -offsetY);
+//                ((View)getParent()).scrollBy(-offsetX, -offsetY);
 
                 break;
         }

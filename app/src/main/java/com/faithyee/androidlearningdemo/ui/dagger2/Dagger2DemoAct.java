@@ -12,7 +12,6 @@ import com.faithyee.androidlearningdemo.ui.dagger2.component.AppComponent;
 import com.faithyee.androidlearningdemo.utils.LogUtils;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -44,7 +43,7 @@ public class Dagger2DemoAct extends AppCompatActivity implements Dagger2Contract
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dagger2_demo);
+        setContentView(R.layout.act_dagger2_demo);
 
         resultTv = (TextView) findViewById(R.id.result);
         name = (EditText) findViewById(R.id.name);

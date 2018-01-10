@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.faithyee.androidlearningdemo.ui.view.practiceDay08.PracticeThumbUpViewLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.faithyee.androidlearningdemo.ui.view.ViewDemoDisplay2Act">
 
     <com.faithyee.androidlearningdemo.ui.view.practiceDay08.thumbUpview.ThumbUpLayout
         android:id="@+id/thumbUpView"
@@ -30,4 +29,20 @@
         android:text="设置"
         />
 
-</com.faithyee.androidlearningdemo.ui.view.practiceDay08.PracticeThumbUpViewLayout>
+    <com.faithyee.androidlearningdemo.ui.view.practiceDay09.view.CustomView
+        android:layout_height="60dp"
+        android:layout_width="60dp"
+        android:background="#123123">
+
+    </com.faithyee.androidlearningdemo.ui.view.practiceDay09.view.CustomView>
+
+
+    <com.faithyee.androidlearningdemo.ui.view.practiceDay09.view.ScrollerView
+        android:id="@+id/sv"
+        android:layout_height="60dp"
+        android:layout_width="60dp"
+        android:background="#123999">
+
+    </com.faithyee.androidlearningdemo.ui.view.practiceDay09.view.ScrollerView>
+
+</LinearLayout>
