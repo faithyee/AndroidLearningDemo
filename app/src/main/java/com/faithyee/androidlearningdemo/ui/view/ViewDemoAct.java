@@ -31,5 +31,8 @@ public class ViewDemoAct extends AppCompatActivity {
         startActivity(new Intent(ViewDemoAct.this, ViewDemoDisplay4Act.class));
     }
 
+    public void miSport(View v){
+        startActivity(new Intent(ViewDemoAct.this, ViewDemoDisplay5Act.class));
+    }
 
 }

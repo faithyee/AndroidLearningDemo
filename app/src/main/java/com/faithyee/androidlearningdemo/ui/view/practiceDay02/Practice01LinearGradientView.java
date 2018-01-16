@@ -35,19 +35,23 @@ public class Practice01LinearGradientView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        Shader shader = new LinearGradient(100, 100, 500, 500, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"), Shader.TileMode.CLAMP);
+        Shader shader = new LinearGradient(100, 100, 500, 500, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
+                Shader.TileMode.CLAMP);
         paint.setShader(shader);
         canvas.drawCircle(300, 300, 200, paint);
 
-        Shader shader2 = new LinearGradient(700, 200, 900, 400, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"), Shader.TileMode.MIRROR);
+        Shader shader2 = new LinearGradient(700, 200, 900, 400, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
+                Shader.TileMode.MIRROR);
         paint.setShader(shader2);
         canvas.drawCircle(800, 300, 200, paint);
 
-        Shader shader3 = new LinearGradient(200, 700, 400, 900, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"), Shader.TileMode.REPEAT);
+        Shader shader3 = new LinearGradient(200, 700, 400, 900, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
+                Shader.TileMode.REPEAT);
         paint.setShader(shader3);
         canvas.drawCircle(300, 800, 200, paint);
 
-        Shader shader4 = new LinearGradient(100, 100, 500, 500, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"), Shader.TileMode.CLAMP);
+        Shader shader4 = new LinearGradient(100, 100, 500, 500, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
+                Shader.TileMode.CLAMP);
         paint.setShader(shader4);
         canvas.drawCircle(800, 800, 200, paint);
     }

@@ -34,15 +34,18 @@ public class Practice02RadialGradientView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        Shader shader = new RadialGradient(300, 300, 200, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"), Shader.TileMode.CLAMP);
+        Shader shader = new RadialGradient(300, 300, 200, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
+                Shader.TileMode.CLAMP);
         paint.setShader(shader);
         canvas.drawCircle(300, 300, 200, paint);
 
-        Shader shader3 = new RadialGradient(800, 300, 100, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"), Shader.TileMode.MIRROR);
+        Shader shader3 = new RadialGradient(800, 300, 100, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
+                Shader.TileMode.MIRROR);
         paint.setShader(shader3);
         canvas.drawCircle(800, 300, 200, paint);
 
-        Shader shader2 = new RadialGradient(300, 800, 100, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"), Shader.TileMode.REPEAT);
+        Shader shader2 = new RadialGradient(300, 800, 100, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
+                Shader.TileMode.REPEAT);
         paint.setShader(shader2);
         canvas.drawCircle(300, 800, 200, paint);
     }

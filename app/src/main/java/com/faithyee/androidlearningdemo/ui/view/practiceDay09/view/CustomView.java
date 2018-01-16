@@ -31,6 +31,11 @@ public class CustomView extends View {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
 
         //获取手指触摸点的横坐标和纵坐标

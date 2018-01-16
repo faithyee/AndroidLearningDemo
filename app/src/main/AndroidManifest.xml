@@ -150,7 +150,8 @@
         <activity android:name=".ui.view.ViewDemoAct" />
         <activity android:name=".ui.view.ViewDemoDisplay2Act" />
         <activity android:name=".ui.view.ViewDemoDisplay3Act" />
-        <activity android:name=".ui.view.ViewDemoDisplay4Act"></activity>
+        <activity android:name=".ui.view.ViewDemoDisplay4Act" />
+        <activity android:name=".ui.view.ViewDemoDisplay5Act"></activity>
     </application>
 
 </manifest>

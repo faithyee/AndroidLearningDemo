@@ -1,4 +1,4 @@
-package com.faithyee.androidlearningdemo.Constant;
+package com.faithyee.androidlearningdemo.constant;
 
 /**
  * Author：yewmf on 2017/12/8 09:49
