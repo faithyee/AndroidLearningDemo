@@ -24,12 +24,13 @@ public class GlideDemoAct extends AppCompatActivity {
 
     public void loadImage(View v){
         Glide.with(this)
-                .load(ConstantValue.IMAGE_GIF_URL)
+                .load(new MyGlideUrl(ConstantValue.IMAGE_GIF_URL))
 //                .asBitmap()//使用该api,gif就无法播放了,只停留在第一帧
 //                .asGif()
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher_round)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                .diskCacheStrategy(DiskCacheStrategy.NONE)//禁用硬盘缓存
+//                .skipMemoryCache(true)//禁用内存缓存
                 .override(100, 100)//Glide现在只会将图片加载成100*100像素的尺寸
                 .into(imageView);
     }
